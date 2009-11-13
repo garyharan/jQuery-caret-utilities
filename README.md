@@ -4,18 +4,18 @@
 
 Allows you to insert text anywhere within a text field.  You can also determine where the caret is and what text is selected.
 
-jQuery.insertAtCaret(text)
+**jQuery.insertAtCaret(text)**
   
   Insert `text` wherever the caret is in your input field.
   
-jQuery.setCaretPosition(start, [end])
+**jQuery.setCaretPosition(start, [end])**
 
   Sets the caret position to the given values.  If `end` is present the text will be selected.
 
-jQuery.getCaretPosition()
+**jQuery.getCaretPosition()**
 
   Returns the starting position of your caret.
 
-jQuery.getSelectedText()
+**jQuery.getSelectedText()**
 
   Returns the text within the selected portion of the item.  It is a very good workaround for the way window.getSelection() does not give you selected text inside form elements in Firefox.
