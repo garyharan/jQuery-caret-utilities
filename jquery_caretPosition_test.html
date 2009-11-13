@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>JavaScript unit test file</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <script src="lib/jsunittest.js" type="text/javascript"></script>
+  <script src="lib/jquery.js" type="text/javascript"></script>
+
+  <!-- TODO: REPLACE "example_library_to_test" throughout file with name of file to test -->
+  <script src="jquery.caretPosition.js" type="text/javascript"></script>
+  
+  <link rel="stylesheet" href="lib/unittest.css" type="text/css" />
+</head>
+<body>
+
+<div id="content">
+
+  <div id="header">
+    <h1>JavaScript unit test file</h1>
+    <p>
+      This file tests <strong>jquery.caretPosition.js</strong>.
+    </p>
+  </div>
+
+  <!-- Log output (one per Runner, via {testLog: "testlog"} option)-->
+  <div id="testlog"></div>
+  
+  <!-- Put sample/test html here -->
+  <div id="sample">
+  </div>
+</div>
+
+<script type="text/javascript">
+// <![CDATA[
+  new Test.Unit.Runner({
+    setup: function(){
+      if ($('#test_input').length == 0){
+        $('<input/>').attr('id', 'test_input').appendTo(document.body).focus().css({'position': 'absolute', 'top': '-1000px'});
+      }
+    },
+    
+    testGetAndSetCaretPosition: function(){ with(this) {
+      assertEqual(5, $('#test_input').val('emergency broadcast system').setCaretPosition(5).getCaretPosition());
+      assertEqual(5, $('#test_input').val('emergency broadcast system').setCaretPosition(5, 8).getCaretPosition());
+    }},
+    
+    testInsertAtCaret: function() { with(this) {
+      assertEqual('hello', $('#test_input').val('helo').setCaretPosition(2).insertAtCaret('l').val());
+    }},
+    
+    testChaining: function() { with(this) {
+      assertEqual('this is a test of the emergency broadcast system', 
+        $('#test_input').val('this of the emergency broadcast system').setCaretPosition(5).insertAtCaret('is a test ').setCaretPosition(10, 14).val());
+    }},
+    
+    testGetSelectedText: function() { with(this){
+      assertEqual('test', $('#test_input').val('this is a test of that').setCaretPosition(10, 14).getSelectedText());
+    }}
+  }); 
+// ]]>
+</script>
+</body>
+</html>
