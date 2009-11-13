@@ -51,6 +51,19 @@
     $(element).focus();
     return getCaretPosition(element);
   }
+
+  $.fn.getSelectedText = function() {
+    var element = $(this).get(0);
+    
+    // workaround for firefox because window.getSelection does not work inside inputs
+    if (typeof element.selectionStart == 'number') {
+      return $(element).val().substr(element.selectionStart, element.selectionEnd - element.selectionStart);
+    } else if (document.getSelection) {
+      return document.getSelection();
+    } else if (window.getSelection) {
+      return window.getSelection();
+    }
+  }
   
   // privates
   function setCaretTo(element, start, end) {
@@ -73,20 +86,6 @@
       var rangeLength = range.text.length;
       range.moveStart('character', -element.value.length);
       return range.text.length - rangeLength;
-    }
-  }
-  
-  // DANGER... this will does not necessarily return text selected within the element you call.
-  $.fn.getSelectedText = function() {
-    var element = $(this).get(0);
-    
-    // workaround for firefox because window.getSelection does not work inside inputs
-    if (typeof element.selectionStart == 'number') {
-      return $(element).val().substr(element.selectionStart, element.selectionEnd - element.selectionStart);
-    } else if (document.getSelection) {
-      return document.getSelection();
-    } else if (window.getSelection) {
-      return window.getSelection();
     }
   }
 })(jQuery);
