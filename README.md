@@ -19,3 +19,10 @@ Allows you to insert text anywhere within a text field.  You can also determine 
 **jQuery.getSelectedText()**
 
   Returns the text within the selected portion of the item.  It is a very good workaround for the way window.getSelection() does not give you selected text inside form elements in Firefox.
+
+
+----
+
+Credits:
+
+-- Mike (aka oste on github) provided a fix for a textarea bug.
