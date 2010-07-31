@@ -28,11 +28,11 @@
 
       element.value = element.value.substr(0, start) + text + element.value.substr(end, element.value.length);
     }
-
-    if (start != null) {
+    
+    if (start) {
       setCaretTo(element, start + text.length);
     } else {
-      element.value += text;
+      element.value = text + element.value;
     }
     
     return this;
