@@ -27,6 +27,31 @@
       var end   = element.selectionEnd;
 
       element.value = element.value.substr(0, start) + text + element.value.substr(end, element.value.length);
+    } else if (document.getSelection() && document.getSelection().anchorNode) {
+      // Selection of contenteditable elements (divs)
+      element.focus();
+      anchorNode = document.getSelection().anchorNode;
+      focusNode = document.getSelection().focusNode;
+
+      // Ignore selection over multiple nodes (TODO?)
+      if (! $(anchorNode).closest(element).length || anchorNode != focusNode) {
+        return false;
+      }
+
+      origContent = anchorNode.textContent;
+      anchorOffset = document.getSelection().anchorOffset || 0;
+      focusOffset = document.getSelection().focusOffset || 0;
+
+      if (anchorOffset == focusOffset) {
+        // No selection: insert at caret position
+        anchorNode.textContent = [origContent.slice(0, anchorOffset), text, origContent.slice(anchorOffset)].join('');
+      } else {
+        // Selection within the same node: replace selection
+        anchorNode.textContent = [origContent.slice(0, anchorOffset), text, origContent.slice(focusOffset)].join('');
+      }
+
+      // Don't need to position caret
+      return this;
     }
     
     if (start) {
