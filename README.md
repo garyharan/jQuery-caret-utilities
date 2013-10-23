@@ -5,9 +5,9 @@
 Allows you to insert text anywhere within a text field.  You can also determine where the caret is and what text is selected.
 
 **jQuery.insertAtCaret(text)**
-  
+
   Insert `text` wherever the caret is in your input field.
-  
+
 **jQuery.setCaretPosition(start, [end])**
 
   Sets the caret position to the given values.  If `end` is present the text will be selected.
@@ -26,3 +26,8 @@ Allows you to insert text anywhere within a text field.  You can also determine 
 Credits:
 
 -- Mike (aka oste on github) provided a fix for a textarea bug.
+-- lipanski provided a fix for editable containers
+
+---
+
+Licensed under the incredibly permissive MIT License. Copyright © 2010-13
