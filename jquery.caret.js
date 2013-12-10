@@ -1,4 +1,9 @@
-(function($){
+/**
+ * https://github.com/garyharan/jQuery-caret-utilities
+ *
+ * Licensed under the incredibly permissive MIT License.
+ */
+ (function($){
   $.fn.insertAtCaret = function(text, opts) {
     var element = $(this).get(0);
 
