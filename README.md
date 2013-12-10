@@ -25,8 +25,9 @@ Allows you to insert text anywhere within a text field.  You can also determine 
 
 Credits:
 
--- Mike (aka oste on github) provided a fix for a textarea bug.
--- lipanski provided a fix for editable containers
+- Mike (aka oste on github) provided a fix for a textarea bug.
+- lipanski provided a fix for editable containers
+- schulzch made certain conditionals more robust
 
 ---
 
