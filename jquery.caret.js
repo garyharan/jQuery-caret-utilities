@@ -1,4 +1,9 @@
-(function($){
+/**
+ * https://github.com/garyharan/jQuery-caret-utilities
+ *
+ * Licensed under the incredibly permissive MIT License.
+ */
+ (function($){
   $.fn.insertAtCaret = function(text, opts) {
     var element = $(this).get(0);
 
@@ -22,7 +27,7 @@
       for (var index = 0, start = 0; tmp.match(text) && (tmp = tmp.replace(text, "")) && index <= diff; index = start + text.length ) {
         start = actual.indexOf(text, index);
       }
-    } else if (element.selectionStart) {
+    } else if (typeof element.selectionStart !== 'undefined') {
       var start = element.selectionStart;
       var end   = element.selectionEnd;
 
@@ -70,7 +75,6 @@
     return this;
   }
   
-  
   $.fn.getCaretPosition = function() {
     var element = $(this).get(0);
     $(element).focus();
@@ -81,7 +85,7 @@
     var element = $(this).get(0);
     
     // workaround for firefox because window.getSelection does not work inside inputs
-    if (typeof element.selectionStart == 'number') {
+    if (typeof element.selectionStart !== 'undefined') {
       return $(element).val().substr(element.selectionStart, element.selectionEnd - element.selectionStart);
     } else if (document.getSelection) {
       return document.getSelection();
@@ -92,19 +96,19 @@
   
   // privates
   function setCaretTo(element, start, end) {
-    if(element.createTextRange) {
+    if (typeof element.createTextRange !== 'undefined') {
       var range = element.createTextRange();
       range.moveStart('character', start);
       range.moveEnd('character',   (end || start));
       range.select();
-    } else if(element.selectionStart) {
+    } else if (typeof element.selectionStart !== 'undefined') {
       element.focus();
       element.setSelectionRange(start, (end || start));
     }
   }
   
   function getCaretPosition(element) {
-    if (typeof element.selectionStart == 'number'){
+    if (typeof element.selectionStart !== 'undefined') {
       return element.selectionStart;
     } else if (document.selection) {
       var range = document.selection.createRange();
