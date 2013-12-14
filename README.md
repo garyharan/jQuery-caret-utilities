@@ -28,6 +28,7 @@ Credits:
 - Mike (aka oste on github) provided a fix for a textarea bug.
 - lipanski provided a fix for editable containers
 - schulzch made certain conditionals more robust
+- Alexandre Kirillov (marexandre) fixing tests
 
 ---
 
