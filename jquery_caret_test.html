@@ -46,6 +46,7 @@
     }},
     
     testInsertAtCaret: function() { with(this) {
+      assertEqual('hello', $('#test_input').val('').setCaretPosition(0).insertAtCaret('hello').val());
       assertEqual('hello', $('#test_input').val('helo').setCaretPosition(2).insertAtCaret('l').val());
       assertEqual('why hello', $('#test_input').val('hello').setCaretPosition(0).insertAtCaret('why ').val());
     }},
@@ -61,6 +62,7 @@
     
     testTextareaInsertAtCaret: function() { with(this){
       $('<textarea/>').attr('id', 'test_textarea').appendTo(document.body).focus().css({'position': 'absolute', 'top': '-10100px'})
+      assertEqual('this is a test', $('#test_textarea').val('').setCaretPosition(0).insertAtCaret('this is a test').val());
       assertEqual('this is a test', $('#test_textarea').val('is a test').setCaretPosition(0).insertAtCaret('this ').val());
       assertEqual('this is a test', $('#test_textarea').val('this  test').setCaretPosition(5).insertAtCaret('is a').val());
     }}

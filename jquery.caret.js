@@ -59,7 +59,7 @@
       return this;
     }
     
-    if (start) {
+    if (typeof start !== 'undefined') {
       setCaretTo(element, start + text.length);
     } else {
       element.value = text + element.value;
